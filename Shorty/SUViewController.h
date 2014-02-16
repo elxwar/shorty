@@ -10,4 +10,7 @@
 
 @interface SUViewController : UIViewController
 
+@property (weak,nonatomic) IBOutlet UITextField* urlField;
+@property (weak,nonatomic) IBOutlet UIWebView* webView;
+
 @end

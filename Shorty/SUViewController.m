@@ -26,4 +26,19 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)loadLocation:(id)sender
+{
+    NSString *urlText = self.urlField.text;
+    
+    if (![urlText hasPrefix:@"http:"] && ![urlText hasPrefix:@"https:"]) {
+        if (![urlText hasPrefix:@"//"])
+            urlText = [@"//" stringByAppendingString:urlText];
+        urlText = [@"http:" stringByAppendingString:urlText];
+    }
+    
+    NSURL *url = [NSURL URLWithString:urlText];
+    
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
 @end
