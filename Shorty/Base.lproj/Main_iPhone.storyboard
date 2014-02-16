@@ -27,8 +27,15 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="URL" returnKeyType="go"/>
+                                            <connections>
+                                                <action selector="loadLocation:" destination="vXZ-lx-hvc" eventType="editingDidEndOnExit" id="Nlh-se-o4E"/>
+                                            </connections>
                                         </textField>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="29N-f5-3Ng"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="29N-f5-3Ng">
+                                            <connections>
+                                                <action selector="loadLocation:" destination="vXZ-lx-hvc" id="U9O-Z4-Mm8"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

@@ -13,4 +13,6 @@
 @property (weak,nonatomic) IBOutlet UITextField* urlField;
 @property (weak,nonatomic) IBOutlet UIWebView* webView;
 
+- (IBAction)loadLocation:(id)sender;
+
 @end
