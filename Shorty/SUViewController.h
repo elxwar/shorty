@@ -12,7 +12,9 @@
 
 @property (weak,nonatomic) IBOutlet UITextField* urlField;
 @property (weak,nonatomic) IBOutlet UIWebView* webView;
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* shortenButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* shortLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* clipboardButton;
 - (IBAction)loadLocation:(id)sender;
 
 @end
