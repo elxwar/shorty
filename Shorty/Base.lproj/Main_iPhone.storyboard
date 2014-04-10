@@ -47,6 +47,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="460" id="mvA-XS-rBf"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="6dc-zn-mx3"/>
+                                </connections>
                             </webView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f82-5N-IBG">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -74,6 +77,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="clipboardButton" destination="ePN-81-AY4" id="IqH-t7-obM"/>
+                        <outlet property="shortLabel" destination="FpR-UU-5UK" id="PFF-Pk-7hm"/>
+                        <outlet property="shortenButton" destination="K6h-0w-SPj" id="WiN-Yf-EJi"/>
                         <outlet property="urlField" destination="y4u-zl-khj" id="Qj6-8p-nsP"/>
                         <outlet property="webView" destination="j7e-F4-TI3" id="o3r-pF-Jx2"/>
                     </connections>

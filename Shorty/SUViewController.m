@@ -20,6 +20,26 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    self.shortenButton.enabled = NO;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    self.shortenButton.enabled = YES;
+    self.urlField.text = webView.request.URL.absoluteString;
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+NSString *message = [NSString stringWithFormat: @"a problem occurred trying to load this page: %@",
+                     error.localizedDescription];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Could not load URL" message:message delegate:nil cancelButtonTitle:@"That's sad" otherButtonTitles:nil];
+    [alert show];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

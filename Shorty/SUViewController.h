@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SUViewController : UIViewController
+@interface SUViewController : UIViewController <UIWebViewDelegate>
 
 @property (weak,nonatomic) IBOutlet UITextField* urlField;
 @property (weak,nonatomic) IBOutlet UIWebView* webView;
