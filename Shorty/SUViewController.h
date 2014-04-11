@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SUViewController : UIViewController <UIWebViewDelegate>
+@interface SUViewController : UIViewController <UIWebViewDelegate, NSURLConnectionDelegate, NSURLConnectionDataDelegate >
 
 @property (weak,nonatomic) IBOutlet UITextField* urlField;
 @property (weak,nonatomic) IBOutlet UIWebView* webView;
@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* shortLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* clipboardButton;
 - (IBAction)loadLocation:(id)sender;
-
+- (IBAction)shortenURL:(id)sender;
+- (IBAction)clipboardURL:(id)sender;
 @end

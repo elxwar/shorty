@@ -9,8 +9,14 @@
 #import "SUViewController.h"
 
 @interface SUViewController ()
+{
+    NSURLConnection *shortenURLConnection;
+    NSMutableData *shortURLData;
+}
 
 @end
+
+#define kGoDaddyAccountKey @"099c05029d3749f2bc70271d0a0aa231"
 
 @implementation SUViewController
 
@@ -46,6 +52,25 @@ NSString *message = [NSString stringWithFormat: @"a problem occurred trying to l
     // Dispose of any resources that can be recreated.
 }
 
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    self.shortLabel.title = @"failed";
+    self.clipboardButton.enabled = NO;
+    self.shortenButton.enabled = YES;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [shortURLData appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *shortURLString = [[NSString alloc] initWithData:shortURLData encoding:NSUTF8StringEncoding];
+    self.shortLabel.title = shortURLString;
+    self.clipboardButton.enabled = YES;
+}
+
 - (IBAction)loadLocation:(id)sender
 {
     NSString *urlText = self.urlField.text;
@@ -59,6 +84,27 @@ NSString *message = [NSString stringWithFormat: @"a problem occurred trying to l
     NSURL *url = [NSURL URLWithString:urlText];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+}
+
+- (IBAction)shortenURL:(id)sender
+{
+    NSString *urlToShorten =
+    self.webView.request.URL.absoluteString;
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://api.x.co/Squeeze.svc/text/%@?url=%@", kGoDaddyAccountKey, [urlToShorten stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    shortURLData = [NSMutableData new];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    shortenURLConnection = [NSURLConnection connectionWithRequest:request delegate:self];
+    self.shortenButton.enabled = NO;
+}
+
+- (IBAction)clipboardURL:(id)sender
+{
+    NSString *shortURLString = self.shortLabel.title;
+    NSURL *shortURL = [NSURL URLWithString:shortURLString];
+    [[UIPasteboard generalPasteboard] setURL:shortURL];
 }
 
 @end
